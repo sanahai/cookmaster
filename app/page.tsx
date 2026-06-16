@@ -9,10 +9,15 @@ import { getSession } from "@/lib/auth";
 
 export default async function LandingPage() {
   const session = await getSession();
-  // 누적 합격생(전 과정 완주) 수
-  const graduates = await prisma.learningProgress.count({
-    where: { wrongMockDone: true, user: { role: { not: "admin" } } },
-  });
+  // 누적 합격생(전 과정 완주) 수 — DB 미연결·미초기화 시 0으로 표시
+  let graduates = 0;
+  try {
+    graduates = await prisma.learningProgress.count({
+      where: { wrongMockDone: true, user: { role: { not: "admin" } } },
+    });
+  } catch {
+    graduates = 0;
+  }
 
   const flow = [
     { icon: "🎁", title: "무료체험", desc: "100문제 무제한" },
