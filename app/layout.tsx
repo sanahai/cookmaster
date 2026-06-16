@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
 
-// 모든 라우트를 요청 시 렌더링(동적)으로 강제 → 빌드 단계에서 DB 접속/프리렌더 방지
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "COOKmaster · 조리·제과제빵 자격증 필기 문제은행",
   description:
@@ -32,6 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        />
+      </head>
       <body className="flex min-h-screen flex-col antialiased">
         <div className="flex-1">{children}</div>
         <Footer />

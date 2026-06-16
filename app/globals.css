@@ -1,19 +1,17 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary: #d81b60;
-  --color-primary-light: #e91e63;
-  --color-primary-pale: #fce4ec;
-  --color-accent: #ff4081;
+  --color-primary: #ea580c;
+  --color-primary-light: #f97316;
+  --color-primary-pale: #ffedd5;
+  --color-accent: #f59e0b;
   --color-success: #2e7d32;
   --color-danger: #c62828;
-  --color-neutral: #424242;
-  --color-gray: #757575;
-  --color-bg: #fff5f8;
+  --color-neutral: #3f3a36;
+  --color-gray: #78716c;
+  --color-bg: #fff7ed;
 }
 
 * {

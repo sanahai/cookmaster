@@ -1,23 +1,30 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
-import { AIExplanationSection } from "@/components/HeroAndAIExplanation_1";
+import GraduatesBanner, { GraduatesBannerSkeleton } from "@/components/GraduatesBanner";
 import EnrollCTA from "@/components/consent/EnrollCTA";
 import { COURSES, PACKAGE_PRICE } from "@/lib/courses";
-import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
+
+const AIExplanationSection = dynamic(
+  () =>
+    import("@/components/HeroAndAIExplanation_1").then((m) => ({
+      default: m.AIExplanationSection,
+    })),
+  {
+    loading: () => (
+      <div className="mx-auto max-w-6xl animate-pulse px-6 py-20">
+        <div className="mx-auto h-10 max-w-md rounded-lg bg-primary-pale/60" />
+        <div className="mx-auto mt-4 h-24 max-w-2xl rounded-lg bg-primary-pale/40" />
+      </div>
+    ),
+  },
+);
 
 export default async function LandingPage() {
   const session = await getSession();
-  // 누적 합격생(전 과정 완주) 수 — DB 미연결·미초기화 시 0으로 표시
-  let graduates = 0;
-  try {
-    graduates = await prisma.learningProgress.count({
-      where: { wrongMockDone: true, user: { role: { not: "admin" } } },
-    });
-  } catch {
-    graduates = 0;
-  }
 
   const flow = [
     { icon: "🎁", title: "무료체험", desc: "100문제 무제한" },
@@ -282,12 +289,10 @@ export default async function LandingPage() {
           </div>
         </section>
 
-        {/* 누적 합격생 배너 */}
-        <section className="bg-primary py-10 text-center">
-          <p className="text-2xl font-bold text-white sm:text-3xl">
-            지금까지 <span className="font-extrabold text-yellow-300">{(graduates + 98).toLocaleString()}명</span>이 이 방법으로 합격했습니다
-          </p>
-        </section>
+        {/* 누적 합격생 배너 — Suspense로 히어로·과정 영역 먼저 스트리밍 */}
+        <Suspense fallback={<GraduatesBannerSkeleton />}>
+          <GraduatesBanner />
+        </Suspense>
 
         {/* 후기 */}
         <section className="bg-primary-pale/50">
