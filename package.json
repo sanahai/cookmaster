@@ -10,6 +10,7 @@
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
+    "db:migrate-admin-email": "tsx scripts/migrate-admin-email.ts",
     "db:studio": "prisma studio"
   },
   "prisma": {
