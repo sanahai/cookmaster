@@ -36,7 +36,7 @@ export default async function EnrollListPage() {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div>
               <h2 className="text-lg font-bold text-primary">조리기능사 패키지 (4종 전체)</h2>
-              <p className="text-sm text-beauty-gray">한식·양식·중식·일식 모두 · 약 50% 할인</p>
+              <p className="text-sm text-beauty-gray">한식·양식·중식·일식 4종 일괄</p>
               <p className="mt-1 text-2xl font-extrabold text-primary">
                 {PACKAGE_PRICE.toLocaleString()}원
               </p>

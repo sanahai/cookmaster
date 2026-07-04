@@ -16,6 +16,11 @@ export type CourseConfig = {
 // 조리기능사 패키지(4종 전체)에 포함되는 카테고리
 export const PACKAGE_CATEGORY = "조리기능사";
 
+export const COURSE_PRICE = 9900;
+/** 조리기능사 4종(한·양·중·일) 패키지 */
+export const PACKAGE_PRICE = COURSE_PRICE * 4;
+export const EXTEND_PRICE = COURSE_PRICE;
+
 export const COURSES: CourseConfig[] = [
   {
     slug: "cook-korean",
@@ -23,7 +28,7 @@ export const COURSES: CourseConfig[] = [
     category: "조리기능사",
     icon: "🍚",
     description: "식품위생·식품학·조리이론·공중보건·한식조리",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "식품위생및관련법규", ratio: 0.2 },
       { subject: "식품학", ratio: 0.2 },
@@ -38,7 +43,7 @@ export const COURSES: CourseConfig[] = [
     category: "조리기능사",
     icon: "🍝",
     description: "식품위생·식품학·조리이론·공중보건·양식조리",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "식품위생및관련법규", ratio: 0.2 },
       { subject: "식품학", ratio: 0.2 },
@@ -53,7 +58,7 @@ export const COURSES: CourseConfig[] = [
     category: "조리기능사",
     icon: "🥟",
     description: "식품위생·식품학·조리이론·공중보건·중식조리",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "식품위생및관련법규", ratio: 0.2 },
       { subject: "식품학", ratio: 0.2 },
@@ -68,7 +73,7 @@ export const COURSES: CourseConfig[] = [
     category: "조리기능사",
     icon: "🍣",
     description: "식품위생·식품학·조리이론·공중보건·일식조리",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "식품위생및관련법규", ratio: 0.2 },
       { subject: "식품학", ratio: 0.2 },
@@ -83,7 +88,7 @@ export const COURSES: CourseConfig[] = [
     category: "제과",
     icon: "🍰",
     description: "제과이론·재료과학·영양학·식품위생",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "제과이론", ratio: 0.3 },
       { subject: "재료과학", ratio: 0.25 },
@@ -97,7 +102,7 @@ export const COURSES: CourseConfig[] = [
     category: "제빵",
     icon: "🍞",
     description: "제빵이론·재료과학·영양학·식품위생",
-    price: 39000,
+    price: COURSE_PRICE,
     subjects: [
       { subject: "제빵이론", ratio: 0.3 },
       { subject: "재료과학", ratio: 0.25 },
@@ -106,9 +111,6 @@ export const COURSES: CourseConfig[] = [
     ],
   },
 ];
-
-export const PACKAGE_PRICE = 79000;
-export const EXTEND_PRICE = 19000;
 
 export function getCourseConfig(slug: string): CourseConfig | undefined {
   return COURSES.find((c) => c.slug === slug);

@@ -34,11 +34,11 @@ model User {
 
 model Course {
   id           Int      @id @default(autoincrement())
-  slug         String   @unique // e.g. 'beauty-general'
+  slug         String   @unique // e.g. 'cook-korean'
   name         String // e.g. '한식조리기능사 필기'
   category     String? // e.g. '조리기능사'
   description  String?
-  price        Int      @default(39000)
+  price        Int      @default(9900)
   durationDays Int      @default(90)
   isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())

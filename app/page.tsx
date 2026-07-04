@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
 import GraduatesBanner, { GraduatesBannerSkeleton } from "@/components/GraduatesBanner";
 import EnrollCTA from "@/components/consent/EnrollCTA";
-import { COURSES, PACKAGE_PRICE } from "@/lib/courses";
+import { COURSES, PACKAGE_PRICE, COURSE_PRICE } from "@/lib/courses";
 import { getSession } from "@/lib/auth";
 
 const AIExplanationSection = dynamic(
@@ -274,7 +274,7 @@ export default async function LandingPage() {
                 인기
               </span>
               <h3 className="text-lg font-bold text-beauty-neutral">단일 자격증</h3>
-              <div className="my-4 text-4xl font-extrabold text-primary">39,000원</div>
+              <div className="my-4 text-4xl font-extrabold text-primary">{COURSE_PRICE.toLocaleString()}원</div>
               <p className="mb-6 text-sm text-beauty-gray">1종 전체 문제 · 3개월</p>
               <Link href="/enroll" className="btn-primary w-full">수강신청하기</Link>
             </div>
@@ -283,7 +283,7 @@ export default async function LandingPage() {
               <div className="my-4 text-4xl font-extrabold text-primary">
                 {PACKAGE_PRICE.toLocaleString()}원
               </div>
-              <p className="mb-6 text-sm text-beauty-gray">4종 전체 · 약 50% 할인</p>
+              <p className="mb-6 text-sm text-beauty-gray">한식·양식·중식·일식 4종 · 3개월</p>
               <Link href="/enroll" className="btn-outline w-full">수강신청하기</Link>
             </div>
           </div>

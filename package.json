@@ -11,6 +11,7 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:migrate-admin-email": "tsx scripts/migrate-admin-email.ts",
+    "db:sync-courses": "tsx scripts/sync-cookmaster-courses.ts",
     "db:studio": "prisma studio"
   },
   "prisma": {
